@@ -1,0 +1,658 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ════════════════════════════════════════════════════════════
+   LOTTERY WATCH — design system (shared with Coach Claude and Asset Tracker)
+   Apple Human Interface foundations (SF type, system colours,
+   grouped surfaces, continuous corners) with a Monzo-style
+   hot-coral brand. Tokens are RGB triplets so Tailwind opacity
+   modifiers keep working (e.g. bg-void-900/80).
+   ════════════════════════════════════════════════════════════ */
+
+@layer base {
+  /* ── Light ── */
+  :root {
+    /* surfaces — iOS grouped background + white cells */
+    --void-950: 246 245 241;   /* page — warm paper */
+    --void-900: 255 255 255;   /* card */
+    --void-850: 248 248 250;   /* subtle inset */
+    --void-800: 239 239 244;   /* fill / inset well */
+    --void-700: 229 229 234;   /* separator */
+    --void-600: 209 209 214;   /* strong separator */
+
+    /* labels */
+    --text-strong:    0 0 0;
+    --text-primary:   28 28 30;
+    --text-secondary: 60 60 67;
+    --text-tertiary:  99 99 102;
+    --text-muted:     134 134 139;
+    --text-faint:     174 174 178;
+
+    /* brand — Monzo hot coral on deep navy */
+    --coral:        0 128 100;
+    --coral-strong: 0 108 84;
+    --navy:         20 35 60;
+
+    /* system colours (tuned for legibility on white) */
+    --accent-blue:   0 122 255;
+    --accent-teal:   0 160 190;
+    --accent-violet: 175 82 222;
+    --positive:      36 168 80;
+    --warning:       240 128 0;
+    --negative:      255 59 48;
+
+    --card-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 0 0 0.5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 32px rgba(0, 0, 0, 0.08);
+    --material: 255 255 255;   /* translucent chrome base */
+    --material-alpha: 0.72;
+    --hairline: 0 0 0 / 0.08;
+  }
+
+  /* ── Dark ── */
+  .dark {
+    --void-950: 9 10 15;       /* page — ink */
+    --void-900: 18 20 28;      /* card */
+    --void-850: 24 27 36;
+    --void-800: 31 34 45;      /* fill */
+    --void-700: 43 47 61;      /* separator */
+    --void-600: 62 67 84;
+
+    --text-strong:    255 255 255;
+    --text-primary:   242 242 247;
+    --text-secondary: 215 215 220;
+    --text-tertiary:  174 174 178;
+    --text-muted:     142 142 147;
+    --text-faint:     99 99 102;
+
+    --coral:        60 207 160;
+    --coral-strong: 40 180 138;
+    --navy:         242 242 247;
+
+    --accent-blue:   10 132 255;
+    --accent-teal:   100 210 255;
+    --accent-violet: 191 90 242;
+    --positive:      48 209 88;
+    --warning:       255 159 10;
+    --negative:      255 69 58;
+
+    --card-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.055), 0 20px 40px -28px rgba(0, 0, 0, 0.8);
+    --card-shadow-hover: inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+    --material: 11 12 18;
+    --material-alpha: 0.72;
+    --hairline: 255 255 255 / 0.1;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-surface-100 bg-void-950;
+    font-size: 15px;
+    letter-spacing: -0.006em;
+    font-feature-settings: 'cv11' 1, 'ss01' 1;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Quiet scrollbars — overlay feel */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--text-faint) / 0.4);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--text-faint) / 0.7); background-clip: padding-box; }
+
+  ::selection {
+    background: rgb(var(--coral) / 0.22);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent-blue) / 0.6);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* ── Card — the core surface (legacy name .hud-panel kept) ── */
+  .hud-panel {
+    position: relative;
+    border-radius: 22px;
+    background: rgb(var(--void-900));
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1), background-color 300ms ease;
+  }
+  a.hud-panel:hover,
+  button.hud-panel:hover,
+  .hud-panel.is-interactive:hover {
+    box-shadow: var(--card-shadow-hover);
+  }
+
+  /* Corner brackets — retired */
+  .hud-corners::before,
+  .hud-corners::after { content: none; }
+
+  /* Meta label — Apple footnote style: sentence case, secondary */
+  .telemetry-label {
+    @apply font-sans text-[12px] font-medium text-surface-400;
+    letter-spacing: -0.003em;
+  }
+
+  /* Card titles built by hand (h2/h3 with the label class) read as headlines */
+  h2.telemetry-label,
+  h3.telemetry-label {
+    font-size: 17px !important;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    color: rgb(var(--text-strong)) !important;
+  }
+
+  .led {
+    @apply inline-block w-1.5 h-1.5 rounded-full;
+  }
+
+  /* Numeric readouts — SF Pro Display, tabular, tight */
+  .readout {
+    @apply font-sans font-bold tabular-nums;
+    letter-spacing: -0.035em;
+  }
+  .readout-green { @apply readout text-hud-green; }
+  .readout-red   { @apply readout text-hud-red; }
+
+  .glass-card { @apply hud-panel; }
+
+  /* Brand accent text */
+  .gradient-text {
+    background-image: linear-gradient(100deg, rgb(var(--coral)) 0%, #ff7a59 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stat-card {
+    @apply relative overflow-hidden rounded-[22px] p-5 transition-all duration-300;
+  }
+
+  /* ── Translucent chrome (sidebar, bars, sheets) ── */
+  .material {
+    background: rgb(var(--material) / var(--material-alpha));
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    backdrop-filter: saturate(180%) blur(24px);
+  }
+  .hairline-b { box-shadow: inset 0 -0.5px 0 rgb(var(--hairline)); }
+  .hairline-t { box-shadow: inset 0 0.5px 0 rgb(var(--hairline)); }
+  .hairline-r { box-shadow: inset -0.5px 0 0 rgb(var(--hairline)); }
+
+  /* ── Page header — iOS large title ── */
+  .page-header {
+    @apply flex flex-wrap items-end gap-x-4 gap-y-3 pt-2 pb-1;
+  }
+  .page-eyebrow {
+    @apply font-sans text-[13px] font-semibold text-surface-400;
+  }
+  .page-title {
+    @apply font-title text-[42px] sm:text-[52px] font-normal leading-[1] text-surface-50;
+    letter-spacing: -0.02em;
+  }
+  .page-meta {
+    @apply flex flex-wrap items-center gap-x-5 gap-y-1 text-[13px] text-surface-400 tabular-nums;
+  }
+  .page-meta b, .page-meta strong { @apply font-semibold text-surface-100; }
+
+  /* ── Monzo-style balance card ── */
+  .balance-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: #fff;
+    border-radius: 26px;
+    background:
+      radial-gradient(120% 90% at 0% 0%, #ff8a5c 0%, transparent 55%),
+      radial-gradient(90% 120% at 100% 100%, #d81b60 0%, transparent 60%),
+      linear-gradient(135deg, #ff5a3c 0%, #ff4f40 45%, #f0365a 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 18px 40px -12px rgba(255, 79, 64, 0.55);
+  }
+  .balance-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 50% at 85% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 14px);
+    pointer-events: none;
+  }
+  .dark .balance-card {
+    box-shadow: 0 18px 50px -16px rgba(255, 79, 64, 0.45);
+  }
+
+  /* Segmented control on a coloured card */
+  .glass-segmented {
+    @apply inline-flex items-center rounded-full p-[3px];
+    background: rgba(0, 0, 0, 0.14);
+  }
+
+  /* Income hero — deep navy to indigo, sibling of the balance card */
+  .pay-card {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    border-radius: 22px;
+    min-height: 168px;
+    background:
+      radial-gradient(110% 80% at 100% 0%, rgba(94, 92, 230, 0.9) 0%, transparent 60%),
+      radial-gradient(90% 90% at 0% 100%, rgba(10, 132, 255, 0.55) 0%, transparent 60%),
+      linear-gradient(140deg, #14233c 0%, #1e2a5e 55%, #2b2f8f 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 18px 40px -14px rgba(43, 47, 143, 0.6);
+  }
+
+  /* ── iOS segmented control ── */
+  .segmented {
+    @apply inline-flex items-center rounded-[9px] p-[2px];
+    background: rgb(118 118 128 / 0.12);
+  }
+  .dark .segmented { background: rgb(118 118 128 / 0.24); }
+  .segmented-item {
+    @apply relative px-3 py-[5px] rounded-[7px] font-sans text-[12px] font-semibold text-surface-200 transition-colors duration-200 whitespace-nowrap;
+  }
+  .segmented-item:hover { @apply text-surface-50; }
+  .segmented-thumb {
+    position: absolute;
+    inset: 0;
+    border-radius: 7px;
+    background: rgb(var(--void-900));
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.04), 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
+  }
+  .dark .segmented-thumb { background: rgb(99 99 102); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
+
+  .segmented-item-active {
+    @apply text-surface-50;
+    background: rgb(var(--void-900));
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.04), 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
+  }
+  .dark .segmented-item-active { background: rgb(99 99 102); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
+
+  /* ── Filter chips (selected = inverted, Apple Music style) ── */
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-[7px] rounded-full font-sans text-[13px] font-semibold tabular-nums
+           text-surface-100 transition-all duration-200 whitespace-nowrap;
+    background: rgb(118 118 128 / 0.12);
+  }
+  .chip:hover { background: rgb(118 118 128 / 0.2); }
+  .chip:active { transform: scale(0.97); }
+  .chip-active,
+  .chip-active:hover {
+    background: rgb(var(--text-strong));
+    color: rgb(var(--void-900));
+  }
+
+  /* Page header meta text */
+  .page-header .font-mono { @apply text-[13px] font-sans; }
+
+  /* ── iOS settings-style icon tile ── */
+  .icon-tile {
+    @apply inline-flex flex-shrink-0 items-center justify-center rounded-[8px] text-white;
+    width: 28px;
+    height: 28px;
+    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.15), 0 1px 2px rgba(0, 0, 0, 0.12);
+  }
+
+  /* ── iOS slider: thin track with accent fill, floating white thumb ── */
+  .ios-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 9999px;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--accent, rgb(var(--coral))) var(--fill, 50%), rgb(118 118 128 / 0.2) var(--fill, 50%));
+  }
+  .ios-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.04), 0 3px 8px rgba(0, 0, 0, 0.15), 0 3px 1px rgba(0, 0, 0, 0.06);
+    transition: transform 150ms ease;
+  }
+  .ios-slider:active::-webkit-slider-thumb { transform: scale(1.1); }
+  .ios-slider::-moz-range-thumb {
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Pace bars: solid gradient for real legs, hatched for projections */
+  .pace-actual { background: linear-gradient(90deg, rgb(var(--positive) / 0.75), rgb(var(--positive))); }
+  .pace-projected {
+    background:
+      repeating-linear-gradient(-45deg, rgb(var(--warning) / 0.38) 0 6px, rgb(var(--warning) / 0.18) 6px 12px);
+    box-shadow: inset 0 0 0 1px rgb(var(--warning) / 0.35);
+  }
+
+  /* ── Form controls ── */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-[12px] bg-void-800
+           font-sans text-right text-[17px] font-semibold tabular-nums text-surface-50
+           transition-all duration-200
+           placeholder:text-surface-500 placeholder:font-normal placeholder:text-[15px] placeholder:text-left;
+    border: 1px solid transparent;
+  }
+  .input-field:hover { background: rgb(var(--void-800) / 0.8); }
+  .input-field:focus {
+    outline: none;
+    background: rgb(var(--void-900));
+    border-color: rgb(var(--accent-blue) / 0.6);
+    box-shadow: 0 0 0 4px rgb(var(--accent-blue) / 0.15);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-sans text-[15px] font-semibold text-white
+           transition-all duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
+    background: rgb(var(--coral));
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 8px 20px -6px rgb(var(--coral) / 0.6);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: rgb(var(--coral-strong));
+    transform: translateY(-1px);
+  }
+  .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-sans text-[15px] font-semibold text-surface-50 transition-all duration-200;
+    background: rgb(118 118 128 / 0.12);
+  }
+  .btn-secondary:hover { background: rgb(118 118 128 / 0.2); }
+  .btn-secondary:active { transform: scale(0.98); }
+
+  /* ── Sidebar navigation (macOS source list) ── */
+  .nav-link {
+    @apply flex items-center gap-3 px-2.5 py-[7px] rounded-[10px] text-[14px] font-sans font-medium
+           text-surface-100 transition-colors duration-150;
+  }
+  .nav-link:hover { background: rgb(118 118 128 / 0.1); }
+  .nav-link-active,
+  .nav-link-active:hover {
+    @apply text-surface-50 font-semibold;
+    background: transparent;
+  }
+  .nav-pill {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: rgb(118 118 128 / 0.16);
+  }
+  .dark .nav-pill { background: rgb(118 118 128 / 0.28); }
+
+  .aurora-bg { background: none; }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, rgb(var(--text-strong)) 0%, rgb(var(--text-tertiary)) 50%, rgb(var(--text-strong)) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+  .hero-shimmer {
+    color: rgb(var(--text-strong));
+    -webkit-text-fill-color: currentColor;
+  }
+
+  /* ── Inset tile — a grouped cell inside a card ── */
+  .tile {
+    border-radius: 16px;
+    background: rgb(118 118 128 / 0.07);
+    transition: background-color 200ms ease, box-shadow 200ms ease;
+  }
+  .dark .tile { background: rgb(118 118 128 / 0.14); }
+  .tile:hover { background: rgb(118 118 128 / 0.11); }
+  .dark .tile:hover { background: rgb(118 118 128 / 0.2); }
+
+  /* Interactive list row — soft fill on hover, Apple list feel */
+  .row-hover { transition: background-color 150ms ease; border-radius: 12px; }
+  .row-hover:hover { background: rgb(118 118 128 / 0.08); }
+
+  /* ── Stat strip under a chart — Apple Stocks style ── */
+  .stat-strip {
+    @apply grid grid-flow-col auto-cols-fr mt-4 pt-4 px-2 gap-4;
+    box-shadow: inset 0 0.5px 0 rgb(var(--hairline));
+  }
+  .stat-strip > p { @apply flex flex-col gap-0.5 font-sans text-[15px] font-semibold tabular-nums; }
+  .stat-strip > p > span:first-child { @apply text-[12px] font-medium text-surface-400; }
+  .stat-strip .font-bold { font-weight: 600; }
+
+  /* ── Chart tooltip — frosted card ── */
+  .chart-tooltip {
+    min-width: 168px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgb(var(--void-900) / 0.86);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0 0 0 0.5px rgb(var(--hairline)), 0 10px 30px -6px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+    pointer-events: none;
+  }
+  .dark .chart-tooltip {
+    background: rgb(44 44 46 / 0.86);
+    box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.1), 0 12px 32px -6px rgba(0, 0, 0, 0.6);
+  }
+
+  .chart-tooltip .font-mono { font-size: 13px; }
+  .chart-tooltip .font-bold { font-weight: 600; }
+  .chart-tooltip .telemetry-label { margin-bottom: 4px; }
+}
+
+@layer utilities {
+  /* Numbers everywhere use SF tabular figures (font-mono is mapped to the
+     system stack in tailwind.config.js) */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
+  .animate-stagger-5 { animation-delay: 0.5s; }
+
+  .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+  /* Retired decorations — no-ops kept for legacy markup */
+  .blueprint-grid { background-image: none; }
+  .scanlines::after { content: none; }
+  .shine-sweep::after { content: none; }
+  .scan-line::before { content: none; }
+  .aurora-drift::before { content: none; }
+  .glow-border::before { content: none; }
+  .breath { animation: none; }
+  .float-y { animation: none; }
+  .number-glow { animation: none; }
+
+  @keyframes pop-in {
+    0%   { opacity: 0; transform: translateY(12px) scale(0.985); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .pop-in { animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  @keyframes paidoff-pulse {
+    0%, 100% { opacity: 0.65; }
+    50%      { opacity: 1; }
+  }
+  .paidoff-pulse { animation: paidoff-pulse 3.2s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .paidoff-pulse,
+    .pop-in,
+    .shimmer-text {
+      animation: none !important;
+    }
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   RUN COACH additions
+   ════════════════════════════════════════════════════════════ */
+@layer components {
+  /* Icon tiles are tinted, not solid: colour whispers, content speaks */
+  .icon-tile {
+    box-shadow: none;
+    border-radius: 10px;
+    color: var(--tile, rgb(var(--coral)));
+    background: color-mix(in srgb, var(--tile, rgb(var(--coral))) 15%, transparent);
+  }
+
+  /* Accent callout — a tinted panel with a lit edge */
+  .accent-panel {
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgb(var(--coral) / 0.16), rgb(var(--coral) / 0.05));
+    box-shadow: inset 0 0 0 1px rgb(var(--coral) / 0.22);
+  }
+
+  .eyebrow {
+    @apply text-[11.5px] font-bold uppercase text-coral;
+    letter-spacing: 0.09em;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] font-semibold text-surface-100;
+    background: rgb(118 118 128 / 0.12);
+    box-shadow: inset 0 0 0 1px rgb(var(--hairline));
+  }
+
+  /* Data tables — iOS grouped rows */
+  .data-table { @apply w-full text-[14px] tabular-nums; }
+  .data-table th { @apply text-left text-[12px] font-medium text-surface-400 pb-2 px-1; }
+  .data-table td { @apply py-2.5 px-1 text-surface-100 align-top; box-shadow: inset 0 0.5px 0 rgb(var(--hairline)); }
+  .data-table .num { @apply text-right; }
+
+  .hide-scrollbar { scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* Nothing may widen the page on a phone */
+html, body { overflow-x: clip; }
+.hud-panel { min-width: 0; }
+
+/* ── Motion: small signs of life ── */
+/* The backdrop glow breathes and drifts, very slowly */
+@keyframes glow-drift {
+  0%   { transform: translate3d(-2%, 0, 0) scale(1);    opacity: 0.85; }
+  100% { transform: translate3d(3%, 2%, 0) scale(1.08); opacity: 1; }
+}
+.backdrop-glow { animation: glow-drift 16s ease-in-out infinite alternate; will-change: transform; }
+
+/* Today's marker on the block ridge sends out a soft ring */
+@keyframes today-ping {
+  0%        { transform: translateX(-50%) scale(1);   opacity: 0.5; }
+  70%, 100% { transform: translateX(-50%) scale(2.8); opacity: 0; }
+}
+.today-ping { animation: today-ping 2.8s cubic-bezier(0.22, 1, 0.36, 1) 1.8s infinite; opacity: 0; }
+
+/* Cards lift a touch under a pointer; taps press in */
+@media (hover: hover) {
+  .pill, .tile { transition: transform 200ms ease, background-color 200ms ease; }
+}
+.nav-link:active, nav a:active { transform: scale(0.96); }
+nav a { transition: transform 150ms ease, color 150ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop-glow, .today-ping { animation: none !important; }
+}
+
+/* ── Recharts furniture — calm and recessive. Kept outside @layer so Tailwind
+   does not purge selectors it never sees in the source. ── */
+.recharts-cartesian-grid line { stroke: rgb(var(--void-700) / 0.9); stroke-dasharray: 0; }
+.recharts-cartesian-grid-vertical line { stroke: transparent; }
+.recharts-cartesian-axis line { stroke: transparent; }
+.recharts-cartesian-axis-tick-line { stroke: transparent; }
+.recharts-cartesian-axis-tick-value { fill: rgb(var(--text-muted)); font-weight: 500; }
+.recharts-tooltip-cursor { stroke: rgb(var(--text-faint) / 0.6); }
+.recharts-tooltip-wrapper { outline: none; }
+.recharts-legend-item-text { color: rgb(var(--text-tertiary)) !important; font-size: 12px; font-weight: 500; }
+.recharts-default-tooltip {
+  border-radius: 14px !important;
+  border: none !important;
+  background: rgb(var(--void-900)) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Tiles that sit straight on the page (not inside a card) are small cards
+   themselves: white, with the card shadow, so they do not read as disabled ── */
+.tile:not(.hud-panel *) {
+  background: rgb(var(--void-900));
+  box-shadow: var(--card-shadow);
+  border-radius: 18px;
+}
+.dark .tile:not(.hud-panel *) { background: rgb(var(--void-900)); }
+.tile:not(.hud-panel *):hover { background: rgb(var(--void-900)); }
+
+/* ── Mobile tab bar: the active tab carries a soft pill behind its icon ── */
+.tab {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 2px 0 3px;
+  color: rgb(var(--text-muted));
+  transition: color 150ms ease, transform 150ms ease;
+}
+.tab-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 46px; height: 28px; border-radius: 9999px;
+  transition: background-color 200ms ease;
+}
+.tab-label { font-size: 10px; font-weight: 500; letter-spacing: 0.01em; }
+.tab-active { color: rgb(var(--coral)); }
+.tab-active .tab-icon { background: rgb(var(--coral) / 0.14); }
+.tab-active .tab-label { font-weight: 700; }
+
+/* ── Section strip chips (phone): quiet until marked ── */
+.section-chip {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: rgb(var(--text-tertiary));
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.section-chip-active {
+  color: rgb(var(--void-900));
+  background: rgb(var(--text-strong));
+}
+
+/* The installed app has no browser chrome to bounce against */
+@media (display-mode: standalone) {
+  html, body { overscroll-behavior-y: contain; }
+}
+
+/* ── Medals: the filled parts of an emblem take the pen's colour ── */
+.badge-glyph .f { fill: currentColor; stroke: none; }
+.badge-glyph { color: #fff; }
+.badge-glyph[stroke^="rgb(118"] { color: rgb(118 118 128 / 0.55); }
+/* The medal viewer: the medal turns to face you, then a light passes over it */
+@keyframes medal-in { 0% { transform: perspective(700px) rotateY(-200deg) scale(0.5); opacity: 0; } 60% { opacity: 1; } 100% { transform: perspective(700px) rotateY(0) scale(1); opacity: 1; } }
+@keyframes medal-sway { 0%, 100% { transform: perspective(700px) rotateY(-14deg) rotateX(4deg); } 50% { transform: perspective(700px) rotateY(14deg) rotateX(-3deg); } }
+@keyframes medal-glint { 0%, 55% { transform: translateX(-140%) rotate(20deg); } 85%, 100% { transform: translateX(140%) rotate(20deg); } }
+@keyframes medal-spark { 0%, 100% { transform: scale(0.2); opacity: 0; } 50% { transform: scale(1); opacity: 1; } }
+.medal-in { animation: medal-in 900ms cubic-bezier(0.2, 0.9, 0.25, 1.1) both; }
+.medal-sway { animation: medal-sway 5.5s ease-in-out infinite; }
+.medal-glint { animation: medal-glint 3.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .medal-in, .medal-sway, .medal-glint { animation: none; } }
