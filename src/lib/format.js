@@ -42,3 +42,17 @@ export function span(days) {
   return `${(days / 365.25).toFixed(1)} years`
 }
 export const plural = (n, one, many = `${one}s`) => `${N.format(n)} ${n === 1 ? one : many}`
+
+// 0.7 → "70p" · 0.6476 → "65p": what £1 returns, on average
+export const pence = (v) => (v == null ? '—' : `${Math.round(v * 100)}p`)
+// -0.29 → "−29%"
+export const roi = (v) => (v == null ? '—' : `${v > 0 ? '+' : '−'}${Math.abs(v * 100).toFixed(0)}%`)
+// 9.13 → "1 in 9" · 3.39 → "1 in 3.4"
+export function oneInShort(v) {
+  if (v == null) return '—'
+  if (v >= 1e6) return `1 in ${+(v / 1e6).toFixed(1)}m`
+  if (v >= 1e4) return `1 in ${Math.round(v / 1e3)}k`
+  if (v >= 20) return `1 in ${new Intl.NumberFormat('en-GB').format(Math.round(v))}`
+  return `1 in ${+v.toFixed(1)}`
+}
+export const ordinal = (n) => `${n}${['th', 'st', 'nd', 'rd'][n % 100 > 10 && n % 100 < 14 ? 0 : Math.min(n % 10, 4) % 4]}`

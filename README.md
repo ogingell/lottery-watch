@@ -2,15 +2,18 @@
 
 Which National Lottery scratchcards and draws have gone longest without a
 top-prize winner, with the price, odds and payout rate of each, so the games can
-be compared like for like. Built the same way as Coach Claude (Vite, React,
-Tailwind, Recharts, framer-motion) and sharing its design system.
+be compared like for like. Vite, React, Tailwind, Recharts and framer-motion.
 
 | Tab | What it shows |
 |---|---|
-| **Longest wait** | Scratchcards with every top prize still unclaimed (longest on sale first), draws since each draw game's top prize was won, cards being watched, and cards still on sale with no top prize left |
-| **Scratchcards** | Every card on sale: price, top prizes left, odds of any prize, odds of the top prize at launch, payout rate, average cost of a card. Filter by price, sort seven ways |
-| **Draw games** | Lotto, EuroMillions, Set For Life, Thunderball, HotPicks and Powerball: draws unwon, last win, odds, price, jackpot history |
-| **How it works** | What each number means and what it cannot tell you |
+| **Today** | The recommended card (overall or for a chosen budget) with its score and the reasons for it, then shelves: best return per £1, jackpots nobody has won yet, best chance of a real win, draws on a drought, and cards to skip |
+| **Cards** | Every card on sale as a grid, sortable seven ways and filterable by price. Each opens a full breakdown: return and ROI, odds at every prize level, where each £1 goes, what ten cards return on average, and top prizes left |
+| **Draws** | Lotto, EuroMillions, Set For Life, Thunderball, HotPicks and Powerball: draws unwon, last win, odds, price, jackpot history |
+| **Guide** | How the score is built and what the figures can and cannot tell you |
+
+The score (0–100) weighs return per £1 (45%), share of top prizes left (25%),
+chance of winning more than the card cost (20%) and a bonus for every top prize
+being intact after months on sale (10%). See `src/lib/model.js`.
 
 ## Data
 
@@ -22,7 +25,8 @@ Everything comes from the National Lottery's own public website feeds. No key is
 - **Snapshot** — `npm run refresh` writes `public/data/snapshot.json`, the
   fallback when the live function cannot reach the feeds.
 - **Odds** — the feed has no odds. `npm run refresh` reads each card's Game
-  Procedures PDF once and stores the overall odds, print run and payout rate in
+  Procedures PDF once and stores the overall odds, print run, payout rate and
+  full prize table (checked against the game's stated prize fund) in
   `public/data/procedures.json`.
 - **Claim history** — the feed says how many top prizes are left but not when
   they were claimed. `public/data/history.json` records each card's count every
