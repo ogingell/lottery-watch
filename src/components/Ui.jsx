@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Component, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { gbp, gbpShort, pence, span, dLong, plural, oneInShort, ordinal } from '../lib/format'
@@ -119,6 +119,7 @@ export function reasons(c, m) {
   else if (c.kind === 'many') out.push({ w: c.parts.left * 0.6, text: `Smaller top prize of ${gbp(c.topPrize)}, with ${Math.round(c.leftShare * 100)}% of them left` })
   if (c.profitOdds) out.push({ w: c.parts.win, text: `${oneInShort(c.profitOdds)} cards wins more than the ${gbp(c.price)} it costs` })
   else if (c.overallOdds) out.push({ w: 0.3, text: `${oneInShort(c.overallOdds)} cards wins a prize of some kind` })
+  if (c.returns == null) out.push({ w: 1, good: false, text: 'New on sale: odds and return not read yet (updated twice a day)' })
   return out.sort((a, b) => b.w - a.w).slice(0, 3).map((r) => ({ text: r.text, good: r.good !== false }))
 }
 
@@ -174,6 +175,23 @@ export function PageHead({ kicker, title, lead }) {
       {lead && <p className="mt-4 max-w-[56ch] text-[16px] sm:text-[17px] leading-relaxed text-mid">{lead}</p>}
     </Fade>
   )
+}
+
+/* If a page fails to draw, say so and offer a way back, instead of a blank screen. */
+export class Safe extends Component {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  componentDidUpdate(prev) { if (prev.resetKey !== this.props.resetKey && this.state.failed) this.setState({ failed: false }) }
+  render() {
+    if (!this.state.failed) return this.props.children
+    return (
+      <div className="panel p-8 sm:p-12 text-center">
+        <p className="title">This page hit a problem</p>
+        <p className="caption mt-2 max-w-[44ch] mx-auto">The National Lottery's data changed in a way this page did not expect. The other pages still work, and reloading usually fixes it.</p>
+        <button onClick={() => window.location.reload()} className="btn-mint mt-6">Reload</button>
+      </div>
+    )
+  }
 }
 
 export const Empty = ({ children }) => <p className="py-10 text-center text-mid">{children}</p>

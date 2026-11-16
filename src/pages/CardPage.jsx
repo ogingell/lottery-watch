@@ -125,7 +125,7 @@ export default function CardPage({ m }) {
       </section>
 
       <Fade className="grid grid-cols-2 lg:grid-cols-3 gap-3">
-        <Stat label="Back per £1 spent" value={pence(c.returns)} tone={c.returnRank <= 5 ? 'mint' : undefined} hint={`ROI ${roi(c.roi)} · ranks ${c.returnRank} of ${m.cards.length}`} />
+        <Stat label="Back per £1 spent" value={pence(c.returns)} tone={c.returnRank <= 5 ? 'mint' : undefined} hint={c.returns != null ? `ROI ${roi(c.roi)} · ranks ${c.returnRank} of ${m.cards.length}` : 'not read yet'} />
         <Stat label="Average cost of a card" value={c.avgLoss != null ? gbp(Math.round(c.avgLoss * 100) / 100) : '—'} hint={`${gbp(c.price)} price, less average winnings`} />
         <Stat label="Wins any prize" value={oneInShort(c.overallOdds)} hint={c.breakEvenShare != null ? `${pct(c.breakEvenShare)} of wins only return the stake` : 'official overall odds'} />
         <Stat label="Wins more than it cost" value={oneInShort(c.profitOdds)} hint="a prize bigger than the price" />
@@ -139,14 +139,18 @@ export default function CardPage({ m }) {
         </Block>
       )}
 
-      <Block title={`If you bought ten (${gbp(ten)})`} sub="Averages over the whole print run. Any ten cards will differ, usually for the worse: the average includes the rare big wins.">
+      {c.returns == null && (
+        <Fade className="well p-6 text-[14.5px] leading-relaxed text-mid"><b className="text-hi">New on sale.</b> This card has just appeared on the National Lottery's list. Its odds, return and prize table are read from the official procedures twice a day and will fill in at the next update.</Fade>
+      )}
+
+      {c.returns != null && <Block title={`If you bought ten (${gbp(ten)})`} sub="Averages over the whole print run. Any ten cards will differ, usually for the worse: the average includes the rare big wins.">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <Stat label="You'd get back, on average" value={gbp(Math.round(ten * c.returns * 100) / 100)} />
           <Stat label="So it costs you" value={gbp(Math.round(ten * (1 - c.returns) * 100) / 100)} />
           <Stat label="Cards that win anything" value={c.overallOdds ? `~${(10 / c.overallOdds).toFixed(1)}` : '—'} hint="of the ten" />
           <Stat label="Cards that win a profit" value={c.profitOdds ? `~${(10 / c.profitOdds).toFixed(1)}` : '—'} hint="of the ten" />
         </div>
-      </Block>
+      </Block>}
 
       <Block title="Top prizes" sub={waitLine(c, m.trackingSince)}>
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4">

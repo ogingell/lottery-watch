@@ -117,7 +117,7 @@ export default function Home({ m }) {
 
       <Shelf title="Jackpots nobody has won yet" sub="Every top prize still unclaimed, longest on sale first. Time on sale is dated from each game's official procedures, so it is approximate.">
         {m.untouched.length === 0 && <p className="caption py-6">Every card on sale has had at least one top prize claimed.</p>}
-        {m.untouched.map((c) => <CardTile key={c.id} c={c} big={`~${c.wait.days}`} small={`days · ${c.topTotal} × ${gbpShort(c.topPrize)}`} />)}
+        {m.untouched.map((c) => <CardTile key={c.id} c={c} big={`~${c.wait?.days ?? 0}`} small={`days · ${c.topTotal} × ${gbpShort(c.topPrize)}`} />)}
       </Shelf>
 
       <Shelf title="Best chance of a real win" sub="How often a card wins more than it cost. Most advertised “wins” only hand your stake back."

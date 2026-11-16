@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { RefreshCw } from 'lucide-react'
 import { NAV_ITEMS } from './lib/nav'
 import { useLotteryData } from './hooks/useLotteryData'
+import { Safe } from './components/Ui'
 import Home from './pages/Home'
 import Browse from './pages/Browse'
 import CardPage from './pages/CardPage'
@@ -66,6 +67,7 @@ export default function App() {
         {data.error && !model && <div className="panel p-8 text-mid">Couldn't load the prize data: {data.error}</div>}
         {model && (
           <motion.div key={location.pathname} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}>
+            <Safe resetKey={location.pathname}>
             <Routes location={location}>
               <Route path="/" element={<Home m={model} />} />
               <Route path="/cards" element={<Browse m={model} />} />
@@ -74,6 +76,7 @@ export default function App() {
               <Route path="/guide" element={<Guide m={model} source={data.source} />} />
               <Route path="*" element={<Home m={model} />} />
             </Routes>
+            </Safe>
             <footer className="mt-20 pt-6 hair text-[12.5px] leading-relaxed text-low">
               <p>Scratchcard prizes as published by the National Lottery on {dLong(model.updated)}{model.fetchedAt ? `. Checked ${dLong(model.fetchedAt)} at ${hhmm(model.fetchedAt)}` : ''}.</p>
               <p>Independent and unofficial. Not affiliated with The National Lottery or Allwyn. Nothing here is advice to play. 18+.</p>

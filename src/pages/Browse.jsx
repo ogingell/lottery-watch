@@ -4,7 +4,7 @@ import { CardTile, PageHead, Empty } from '../components/Ui'
 import { gbp, gbpShort, pence, oneInShort, dLong } from '../lib/format'
 
 const SORTS = {
-  score:   { label: 'Top rated',          fn: (a, b) => b.eligible - a.eligible || b.score - a.score,            big: (c) => c.score, small: () => 'score' },
+  score:   { label: 'Top rated',          fn: (a, b) => b.eligible - a.eligible || b.score - a.score,            big: (c) => (c.returns == null ? 'New' : c.score), small: (c) => (c.returns == null ? 'odds pending' : 'score') },
   returns: { label: 'Best return',        fn: (a, b) => (b.returns ?? 0) - (a.returns ?? 0),                     big: (c) => pence(c.returns), small: () => 'back per £1' },
   win:     { label: 'Real win chance',    fn: (a, b) => (a.profitOdds ?? 1e9) - (b.profitOdds ?? 1e9),           big: (c) => oneInShort(c.profitOdds), small: () => 'wins a profit' },
   wait:    { label: 'Longest unwon',      fn: (a, b) => waitRank(b) - waitRank(a),                               big: (c) => (c.wait?.basis === 'never' ? `~${c.wait.days}d` : `${c.topLeft}/${c.topTotal}`), small: (c) => (c.wait?.basis === 'never' ? 'no top prize won' : 'top prizes left') },

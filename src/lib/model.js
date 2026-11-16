@@ -108,7 +108,7 @@ function scoreCards(cards) {
     c.score = Math.round(100 * (0.45 * parts.returns + 0.25 * parts.left + 0.2 * parts.win + 0.1 * parts.intact))
     c.eligible = c.kind !== 'gone' && c.kind !== 'unknown' && c.returns != null
   }
-  const ranked = [...cards].sort((a, b) => b.returns - a.returns)
+  const ranked = [...cards].sort((a, b) => (b.returns ?? -1) - (a.returns ?? -1))
   ranked.forEach((c, i) => { c.returnRank = i + 1 })
 }
 
@@ -149,7 +149,9 @@ export function buildModel({ feed, procedures, history, now = new Date() }) {
     pickAt: Object.fromEntries(prices.map((p) => [p, eligible.find((c) => c.price === p) ?? null])),
     bestReturn: cards.filter((c) => c.returns != null).sort((a, b) => b.returns - a.returns),
     bestWin: cards.filter((c) => c.profitOdds && c.kind !== 'gone').sort((a, b) => a.profitOdds - b.profitOdds),
-    untouched: cards.filter((c) => c.kind === 'jackpot' && c.claimed === 0).sort(byWait),
+    untouched: cards.filter((c) => c.kind === 'jackpot' && c.claimed === 0 && c.wait?.basis === 'never').sort(byWait),
+    // On the National Lottery's list but too new for the daily job to have read its procedures yet
+    pending: cards.filter((c) => c.returns == null),
     gone: cards.filter((c) => c.kind === 'gone').sort((a, b) => b.topPrize - a.topPrize),
     drawRank: [...draws].sort((a, b) => (b.waitDays ?? 0) - (a.waitDays ?? 0)),
     avgReturn: cards.reduce((s, c) => s + (c.returns ?? 0), 0) / Math.max(1, cards.filter((c) => c.returns != null).length),
