@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-17T15:56:28.225Z",
+ "fetchedAt": "2026-11-18T00:57:04.602Z",
  "updated": "2026-11-17",
  "cards": [
   {
@@ -962,13 +962,13 @@
    "top": "Match 5 + 2 Lucky Stars",
    "matrix": "5 from 50 + 2 from 12",
    "latest": {
-    "no": 1998,
-    "date": "2026-11-13T20:45:00.000Z",
-    "jackpot": 14195000,
+    "no": 1999,
+    "date": "2026-11-17T20:45:00.000Z",
+    "jackpot": 21565553,
     "prizeText": null,
     "winners": 0
    },
-   "drawsWaited": 1,
+   "drawsWaited": 2,
    "lastWin": {
     "no": 1997,
     "date": "2026-11-10T20:45:00.000Z",
@@ -977,6 +977,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 1999,
+     "date": "2026-11-17T20:45:00.000Z",
+     "jackpot": 21565553,
+     "winners": 0
+    },
     {
      "no": 1998,
      "date": "2026-11-13T20:45:00.000Z",
@@ -1614,12 +1620,6 @@
      "date": "2026-05-25T19:00:00.000Z",
      "jackpot": null,
      "winners": null
-    },
-    {
-     "no": 750,
-     "date": "2026-05-21T19:00:00.000Z",
-     "jackpot": null,
-     "winners": null
     }
    ]
   },
@@ -1632,13 +1632,13 @@
    "top": "Match 5 + Thunderball",
    "matrix": "5 from 39 + 1 from 14",
    "latest": {
-    "no": 4009,
-    "date": "2026-11-14T20:15:00.000Z",
+    "no": 4010,
+    "date": "2026-11-17T20:00:00.000Z",
     "jackpot": 500000,
     "prizeText": null,
     "winners": 0
    },
-   "drawsWaited": 6,
+   "drawsWaited": 7,
    "lastWin": {
     "no": 4003,
     "date": "2026-11-04T20:15:00.000Z",
@@ -1647,6 +1647,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 4010,
+     "date": "2026-11-17T20:00:00.000Z",
+     "jackpot": 500000,
+     "winners": 0
+    },
     {
      "no": 4009,
      "date": "2026-11-14T20:15:00.000Z",
@@ -1950,12 +1956,6 @@
     {
      "no": 3959,
      "date": "2026-08-19T19:15:00.000Z",
-     "jackpot": 500000,
-     "winners": null
-    },
-    {
-     "no": 3958,
-     "date": "2026-08-18T19:00:00.000Z",
      "jackpot": 500000,
      "winners": null
     }
@@ -2302,8 +2302,8 @@
    "top": "Pick 5, match 5",
    "matrix": "5 picked from 50",
    "latest": {
-    "no": 1998,
-    "date": "2026-11-13T20:45:00.000Z",
+    "no": 1999,
+    "date": "2026-11-17T20:45:00.000Z",
     "jackpot": 1000000,
     "prizeText": null,
     "winners": 0
@@ -2312,6 +2312,12 @@
    "lastWin": null,
    "lookback": 48,
    "draws": [
+    {
+     "no": 1999,
+     "date": "2026-11-17T20:45:00.000Z",
+     "jackpot": 1000000,
+     "winners": 0
+    },
     {
      "no": 1998,
      "date": "2026-11-13T20:45:00.000Z",
@@ -2598,7 +2604,7 @@
      "no": 1951,
      "date": "2026-06-02T19:45:00.000Z",
      "jackpot": 1000000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 1950,
