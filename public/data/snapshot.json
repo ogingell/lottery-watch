@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-19T00:19:51.093Z",
+ "fetchedAt": "2026-11-19T15:41:46.203Z",
  "updated": "2026-11-18",
  "cards": [
   {
@@ -2635,13 +2635,13 @@
    "top": "Match 5 + Powerball",
    "matrix": "5 from 69 + 1 from 26",
    "latest": {
-    "no": 51,
-    "date": "2026-11-17T02:59:00.000Z",
-    "jackpot": 40921597,
+    "no": 52,
+    "date": "2026-11-19T02:59:00.000Z",
+    "jackpot": 48664960,
     "prizeText": null,
     "winners": 0
    },
-   "drawsWaited": 5,
+   "drawsWaited": 6,
    "lastWin": {
     "no": 46,
     "date": "2026-11-05T02:59:00.000Z",
@@ -2650,6 +2650,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 52,
+     "date": "2026-11-19T02:59:00.000Z",
+     "jackpot": 48664960,
+     "winners": 0
+    },
     {
      "no": 51,
      "date": "2026-11-17T02:59:00.000Z",
