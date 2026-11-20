@@ -1,7 +1,7 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-19T15:41:46.203Z",
- "updated": "2026-11-18",
+ "fetchedAt": "2026-11-20T00:36:01.460Z",
+ "updated": "2026-11-19",
  "cards": [
   {
    "id": "1510",
@@ -66,7 +66,7 @@
    "price": 5,
    "topPrize": 500,
    "topTotal": 18876,
-   "topLeft": 3905,
+   "topLeft": 3862,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -248,7 +248,7 @@
    "price": 2,
    "topPrize": 100,
    "topTotal": 2909,
-   "topLeft": 677,
+   "topLeft": 676,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -318,7 +318,7 @@
    "price": 1,
    "topPrize": 10,
    "topTotal": 189777,
-   "topLeft": 26952,
+   "topLeft": 26825,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -360,7 +360,7 @@
    "price": 5,
    "topPrize": 1000,
    "topTotal": 9031,
-   "topLeft": 4720,
+   "topLeft": 4716,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -472,7 +472,7 @@
    "price": 2,
    "topPrize": 100,
    "topTotal": 3793,
-   "topLeft": 3158,
+   "topLeft": 3150,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -950,12 +950,6 @@
      "date": "2026-05-27T19:00:00.000Z",
      "jackpot": 2000000,
      "winners": null
-    },
-    {
-     "no": 3174,
-     "date": "2026-05-23T18:45:00.000Z",
-     "jackpot": 10733012,
-     "winners": null
     }
    ]
   },
@@ -1300,13 +1294,13 @@
    "top": "Match 5 + Life Ball",
    "matrix": "5 from 47 + 1 from 10",
    "latest": {
-    "no": 801,
-    "date": "2026-11-16T20:00:00.000Z",
+    "no": 802,
+    "date": "2026-11-19T20:00:00.000Z",
     "jackpot": null,
     "prizeText": "£10,000 every month for 30 years",
-    "winners": 1
+    "winners": 0
    },
-   "drawsWaited": 0,
+   "drawsWaited": 1,
    "lastWin": {
     "no": 801,
     "date": "2026-11-16T20:00:00.000Z",
@@ -1315,6 +1309,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 802,
+     "date": "2026-11-19T20:00:00.000Z",
+     "jackpot": null,
+     "winners": 0
+    },
     {
      "no": 801,
      "date": "2026-11-16T20:00:00.000Z",
@@ -2288,12 +2288,6 @@
     {
      "no": 3175,
      "date": "2026-05-27T19:00:00.000Z",
-     "jackpot": 350000,
-     "winners": null
-    },
-    {
-     "no": 3174,
-     "date": "2026-05-23T18:45:00.000Z",
      "jackpot": 350000,
      "winners": null
     }
