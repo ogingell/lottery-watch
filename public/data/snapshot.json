@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-22T14:30:37.403Z",
+ "fetchedAt": "2026-11-22T23:35:28.398Z",
  "updated": "2026-11-20",
  "cards": [
   {
@@ -1287,12 +1287,6 @@
      "no": 1950,
      "date": "2026-05-29T19:45:00.000Z",
      "jackpot": 112568109,
-     "winners": null
-    },
-    {
-     "no": 1949,
-     "date": "2026-05-26T19:45:00.000Z",
-     "jackpot": 100002438,
      "winners": null
     }
    ]
@@ -2627,12 +2621,6 @@
     {
      "no": 1950,
      "date": "2026-05-29T19:45:00.000Z",
-     "jackpot": 1000000,
-     "winners": null
-    },
-    {
-     "no": 1949,
-     "date": "2026-05-26T19:45:00.000Z",
      "jackpot": 1000000,
      "winners": null
     }
