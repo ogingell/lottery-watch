@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-21T23:11:54.399Z",
+ "fetchedAt": "2026-11-22T14:30:37.403Z",
  "updated": "2026-11-20",
  "cards": [
   {
@@ -2647,62 +2647,68 @@
    "top": "Match 5 + Powerball",
    "matrix": "5 from 69 + 1 from 26",
    "latest": {
-    "no": 52,
-    "date": "2026-11-19T02:59:00.000Z",
-    "jackpot": 48664960,
+    "no": 53,
+    "date": "2026-11-22T02:59:00.000Z",
+    "jackpot": 60505071,
     "prizeText": null,
-    "winners": 0
+    "winners": 1
    },
-   "drawsWaited": 6,
+   "drawsWaited": 0,
    "lastWin": {
-    "no": 46,
-    "date": "2026-11-05T02:59:00.000Z",
+    "no": 53,
+    "date": "2026-11-22T02:59:00.000Z",
     "winners": 1,
-    "jackpot": 448939817
+    "jackpot": 60505071
    },
    "lookback": 48,
    "draws": [
     {
+     "no": 53,
+     "date": "2026-11-22T02:59:00.000Z",
+     "jackpot": 60505071,
+     "winners": 1
+    },
+    {
      "no": 52,
      "date": "2026-11-19T02:59:00.000Z",
      "jackpot": 48664960,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 51,
      "date": "2026-11-17T02:59:00.000Z",
      "jackpot": 40921597,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 50,
      "date": "2026-11-15T02:59:00.000Z",
      "jackpot": 34239114,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 49,
      "date": "2026-11-12T02:59:00.000Z",
      "jackpot": 24063025,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 48,
      "date": "2026-11-10T02:59:00.000Z",
      "jackpot": 16566167,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 47,
      "date": "2026-11-08T02:59:00.000Z",
      "jackpot": 10611077,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 46,
      "date": "2026-11-05T02:59:00.000Z",
      "jackpot": 448939817,
-     "winners": 1
+     "winners": null
     },
     {
      "no": 45,
@@ -2966,12 +2972,6 @@
      "no": 2,
      "date": "2026-07-26T01:59:00.000Z",
      "jackpot": 329623954,
-     "winners": null
-    },
-    {
-     "no": 1,
-     "date": "2026-07-23T01:59:00.000Z",
-     "jackpot": 308063479,
      "winners": null
     }
    ]
