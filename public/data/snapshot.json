@@ -1,7 +1,7 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-26T01:46:23.235Z",
- "updated": "2026-11-25",
+ "fetchedAt": "2026-11-26T16:50:39.364Z",
+ "updated": "2026-11-26",
  "cards": [
   {
    "id": "1510",
@@ -66,7 +66,7 @@
    "price": 5,
    "topPrize": 500,
    "topTotal": 18876,
-   "topLeft": 3613,
+   "topLeft": 3594,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -150,7 +150,7 @@
    "price": 5,
    "topPrize": 500,
    "topTotal": 11548,
-   "topLeft": 1560,
+   "topLeft": 1559,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -248,7 +248,7 @@
    "price": 2,
    "topPrize": 100,
    "topTotal": 2909,
-   "topLeft": 664,
+   "topLeft": 663,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -318,7 +318,7 @@
    "price": 1,
    "topPrize": 10,
    "topTotal": 189777,
-   "topLeft": 26006,
+   "topLeft": 25955,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -360,7 +360,7 @@
    "price": 5,
    "topPrize": 1000,
    "topTotal": 9031,
-   "topLeft": 4688,
+   "topLeft": 4687,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -472,7 +472,7 @@
    "price": 2,
    "topPrize": 100,
    "topTotal": 3793,
-   "topLeft": 3093,
+   "topLeft": 3090,
    "isNew": false,
    "closes": "2028-08-02",
    "claimBy": "2028-08-03",
@@ -2635,13 +2635,13 @@
    "top": "Match 5 + Powerball",
    "matrix": "5 from 69 + 1 from 26",
    "latest": {
-    "no": 54,
-    "date": "2026-11-24T02:59:00.000Z",
-    "jackpot": 10660968,
+    "no": 55,
+    "date": "2026-11-26T02:59:00.000Z",
+    "jackpot": 18256335,
     "prizeText": null,
     "winners": 0
    },
-   "drawsWaited": 1,
+   "drawsWaited": 2,
    "lastWin": {
     "no": 53,
     "date": "2026-11-22T02:59:00.000Z",
@@ -2650,6 +2650,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 55,
+     "date": "2026-11-26T02:59:00.000Z",
+     "jackpot": 18256335,
+     "winners": 0
+    },
     {
      "no": 54,
      "date": "2026-11-24T02:59:00.000Z",
@@ -2954,12 +2960,6 @@
      "no": 4,
      "date": "2026-07-30T01:59:00.000Z",
      "jackpot": 360061081,
-     "winners": null
-    },
-    {
-     "no": 3,
-     "date": "2026-07-28T01:59:00.000Z",
-     "jackpot": 343010322,
      "winners": null
     }
    ]
