@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-26T16:50:39.364Z",
+ "fetchedAt": "2026-11-27T01:42:41.075Z",
  "updated": "2026-11-26",
  "cards": [
   {
@@ -950,12 +950,6 @@
      "date": "2026-06-03T19:00:00.000Z",
      "jackpot": 5027399,
      "winners": null
-    },
-    {
-     "no": 3176,
-     "date": "2026-05-30T18:45:00.000Z",
-     "jackpot": 3800000,
-     "winners": null
     }
    ]
   },
@@ -1300,13 +1294,13 @@
    "top": "Match 5 + Life Ball",
    "matrix": "5 from 47 + 1 from 10",
    "latest": {
-    "no": 803,
-    "date": "2026-11-23T20:00:00.000Z",
+    "no": 804,
+    "date": "2026-11-26T20:00:00.000Z",
     "jackpot": null,
     "prizeText": "£10,000 every month for 30 years",
     "winners": 0
    },
-   "drawsWaited": 2,
+   "drawsWaited": 3,
    "lastWin": {
     "no": 801,
     "date": "2026-11-16T20:00:00.000Z",
@@ -1315,6 +1309,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 804,
+     "date": "2026-11-26T20:00:00.000Z",
+     "jackpot": null,
+     "winners": 0
+    },
     {
      "no": 803,
      "date": "2026-11-23T20:00:00.000Z",
@@ -2288,12 +2288,6 @@
     {
      "no": 3177,
      "date": "2026-06-03T19:00:00.000Z",
-     "jackpot": 350000,
-     "winners": null
-    },
-    {
-     "no": 3176,
-     "date": "2026-05-30T18:45:00.000Z",
      "jackpot": 350000,
      "winners": null
     }
