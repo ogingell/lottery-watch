@@ -1,6 +1,6 @@
 {
  "source": "national-lottery",
- "fetchedAt": "2026-11-27T16:36:07.594Z",
+ "fetchedAt": "2026-11-28T01:26:25.671Z",
  "updated": "2026-11-27",
  "cards": [
   {
@@ -962,13 +962,13 @@
    "top": "Match 5 + 2 Lucky Stars",
    "matrix": "5 from 50 + 2 from 12",
    "latest": {
-    "no": 2001,
-    "date": "2026-11-24T20:45:00.000Z",
-    "jackpot": 39445844,
+    "no": 2002,
+    "date": "2026-11-27T20:45:00.000Z",
+    "jackpot": 49972473,
     "prizeText": null,
     "winners": 0
    },
-   "drawsWaited": 4,
+   "drawsWaited": 5,
    "lastWin": {
     "no": 1997,
     "date": "2026-11-10T20:45:00.000Z",
@@ -977,6 +977,12 @@
    },
    "lookback": 48,
    "draws": [
+    {
+     "no": 2002,
+     "date": "2026-11-27T20:45:00.000Z",
+     "jackpot": 49972473,
+     "winners": 0
+    },
     {
      "no": 2001,
      "date": "2026-11-24T20:45:00.000Z",
@@ -1632,98 +1638,104 @@
    "top": "Match 5 + Thunderball",
    "matrix": "5 from 39 + 1 from 14",
    "latest": {
-    "no": 4015,
-    "date": "2026-11-25T20:15:00.000Z",
+    "no": 4016,
+    "date": "2026-11-27T20:00:00.000Z",
     "jackpot": 500000,
     "prizeText": null,
-    "winners": 0
+    "winners": 1
    },
-   "drawsWaited": 12,
+   "drawsWaited": 0,
    "lastWin": {
-    "no": 4003,
-    "date": "2026-11-04T20:15:00.000Z",
+    "no": 4016,
+    "date": "2026-11-27T20:00:00.000Z",
     "winners": 1,
     "jackpot": 500000
    },
    "lookback": 48,
    "draws": [
     {
+     "no": 4016,
+     "date": "2026-11-27T20:00:00.000Z",
+     "jackpot": 500000,
+     "winners": 1
+    },
+    {
      "no": 4015,
      "date": "2026-11-25T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4014,
      "date": "2026-11-24T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4013,
      "date": "2026-11-21T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4012,
      "date": "2026-11-20T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4011,
      "date": "2026-11-18T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4010,
      "date": "2026-11-17T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4009,
      "date": "2026-11-14T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4008,
      "date": "2026-11-13T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4007,
      "date": "2026-11-11T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4006,
      "date": "2026-11-10T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4005,
      "date": "2026-11-07T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4004,
      "date": "2026-11-06T20:00:00.000Z",
      "jackpot": 500000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 4003,
      "date": "2026-11-04T20:15:00.000Z",
      "jackpot": 500000,
-     "winners": 1
+     "winners": null
     },
     {
      "no": 4002,
@@ -1950,12 +1962,6 @@
     {
      "no": 3965,
      "date": "2026-08-29T19:15:00.000Z",
-     "jackpot": 500000,
-     "winners": null
-    },
-    {
-     "no": 3964,
-     "date": "2026-08-28T19:00:00.000Z",
      "jackpot": 500000,
      "winners": null
     }
@@ -2302,8 +2308,8 @@
    "top": "Pick 5, match 5",
    "matrix": "5 picked from 50",
    "latest": {
-    "no": 2001,
-    "date": "2026-11-24T20:45:00.000Z",
+    "no": 2002,
+    "date": "2026-11-27T20:45:00.000Z",
     "jackpot": 1000000,
     "prizeText": null,
     "winners": 0
@@ -2312,6 +2318,12 @@
    "lastWin": null,
    "lookback": 48,
    "draws": [
+    {
+     "no": 2002,
+     "date": "2026-11-27T20:45:00.000Z",
+     "jackpot": 1000000,
+     "winners": 0
+    },
     {
      "no": 2001,
      "date": "2026-11-24T20:45:00.000Z",
@@ -2598,7 +2610,7 @@
      "no": 1954,
      "date": "2026-06-12T19:45:00.000Z",
      "jackpot": 1000000,
-     "winners": 0
+     "winners": null
     },
     {
      "no": 1953,
